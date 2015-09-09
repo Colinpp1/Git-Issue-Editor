@@ -1,0 +1,14 @@
+{
+  "name": "ngclient",
+  "version": "0.1.0",
+  "dependencies": {
+    "gulp": "3.8.11",
+    "gulp-connect": "2.0.6",
+    "gulp-uglify": "1.0.2",
+    "gulp-concat": "2.5.0",
+    "open": "0.0.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
+}

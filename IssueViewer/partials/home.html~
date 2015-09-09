@@ -1,0 +1,173 @@
+<div ng-controller ="PageCtrl">     
+    
+  
+   
+<table class="table table-responsive table-fill responstable">
+            
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"></div>
+
+        <input type="text" class="form-control" placeholder="Search issues" ng-model="search"></input>
+
+      </div>
+
+
+                    <thead>
+                      <tr>
+                         <th class="text-left">client
+                         <button class="btn btn-mini btn-link" ng-click="sort('client')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                         <th class="text-left">Description
+                           <button class="btn btn-mini btn-link" ng-click="sort('description')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                             
+                          </th>
+                         <th class="text-left">GHNumber
+                           <button class="btn btn-mini btn-link" ng-click="sort('GHNumber')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                         <th class="text-left">Priority
+                           <button class="btn btn-mini btn-link" ng-click="sort('priority')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                         <th class="text-left">Category
+                           <button class="btn btn-mini btn-link" ng-click="sort('category')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                         <th class="text-left">AssignedTo
+                             <button class="btn btn-mini btn-link" ng-click="sort('id')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                           <th class="text-left">Comments
+                             <button class="btn btn-mini btn-link" ng-click="sort('id')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                           <th class="text-left">Status
+                             <button class="btn btn-mini btn-link" ng-click="sort('id')"><i class="glyphicon glyphicon-sort"></i>
+                           </button>
+                          </th>
+                      </tr>
+                     </thead>
+                     <tbody class="table-hover">
+                        <tr ng-repeat="item in issues | filter:search | orderBy:orderProp:direction">
+                          <td class="text-left">{{item.client}}</td>
+                          <td class="text-left">{{item.description}}</td>
+                          <td class="text-left">{{item.GHNumber}}</td>
+                          <td class="text-left">{{item.priority}}</td>
+
+                          <td class="text-left">{{item.category}}</td>
+                          <td class="text-left">{{item.assigned}}</td>
+                          <td class="text-left">{{item.comments}}</td>
+                          <td class="text-left">{{item.status}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+<div class="pull-right">
+<div class="row">
+            <div class="col-xs-12">
+                <button ng-click="connectButton()" id="connectButton" type="button" class="btn btn-primary">Connect Github</button>
+                <button ng-click="ADD()" id="getTimelineButton" type="button" class="btn btn-info" style="display:none;">Add Issue</button>
+                <button ng-click="signOut()" id="signOut" type="button" class="btn btn-link" style="display:none;">Sign Out</button>
+            </div>
+        </div>      
+    </div>
+
+
+
+</div>
+
+
+<!--MODAL for adding issue-->
+<div class="modal fade" id="editIssue" >
+      <div class="modal-dialog">
+        <div class="modal-content well">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Add Issue </h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" role="form" id="Issue" name="Issues" method="post">
+              <div class="form-group">
+                <div class="col-lg-10">
+                 
+                  <input class="form-control input-sm" name="Client" placeholder="Client" value="" disabled="disabled" disabled type="hidden" ng-model="issue.Client">
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <label class="col-lg-2 control-label input-sm" for="Name">Description</label>
+                <div class="col-lg-10">
+                  <input class="form-control input-sm" id="Name" name="Name" placeholder="Name" type="text" value="" ng-model="issue.Description" required>
+
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <label class="col-lg-2 control-label input-sm" for="GHNumber">GHNumber</label>
+                <div class="col-lg-10">
+                  <input class="form-control input-sm" id="GHNumber" name="GHNumber" placeholder="GHNumber" type="text" value="" ng-model="issue.Surname" required>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label input-sm" for="Priority">Priority</label>
+                <div class="col-lg-10">
+                  <input class="form-control input-sm" id="Priority" name="Priority" placeholder="high" type="tel" value="" ng-model="issue.Telephone" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label input-sm" for="Category ">Category</label>
+                <div class="col-lg-10">
+                  <input class="form-control input-sm" id="Category" name="Category" placeholder="Category" type="text" value="" ng-model="issue.Cell" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label input-sm" for="Comments">Comments</label>
+                <div class="col-lg-10">
+                  <input class="form-control input-sm" id="Email" name="Comments" placeholder="add a comment" type="email" value="" ng-model="issue.Comments" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <label class="col-lg-2 control-label" for="Password">Status</label>
+                <div class="col-lg-10">
+                  <input class="form-control" id="Status" name="Status" placeholder="Password" type="password" value="" ng-model="issue.Password" required>
+                </div>
+              </div>
+
+       
+
+              <div class="form-group">
+                <div class="col-lg-10 pull-right">
+
+                  <div class="form-group"></div>
+                  <button class="btn btn-sm btn-success pull-right" ng-click="ADD(issue)" type="submit" name="submit" id="submit">Send</button>
+                  &nbsp;
+                  <button class="btn btn-sm btn-default pull-left" data-dismiss="modal" type="button">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

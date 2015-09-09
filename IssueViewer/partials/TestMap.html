@@ -1,0 +1,22 @@
+<div ng-controller ="PageCtrl">  
+
+
+ <body onload="initialize()">
+    <div>
+      <p>
+        <label for="start">Start: </label>
+        <input type="text" name="start" id="start" />
+        <label for="end">End: </label>
+        <input type="text" name="end" id="end" />
+        <input type="submit" vvalue="Calculate Route" onclick="calcRoute()"  />
+      </p>
+      <p>
+        <label for="distance">Distance (km): </label>
+        <input type="text" name="distance" id="distance" readonly="true" />
+      </p>
+    </div>
+    <div id="map_canvas"></div>
+  </body>
+</html>
+</div>
+
